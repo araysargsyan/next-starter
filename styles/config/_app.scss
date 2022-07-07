@@ -1,0 +1,28 @@
+@import "vars";
+
+//! FONT SIZE
+//! (set html font-size with rem) & (use rem (not px) or em)
+//! rem - last parent tag(like html) with rem
+//! em - first parent tag
+
+html {
+  font-size: (10/16) * 1rem;
+}
+
+body {
+  font-size: $fz;
+  font-family: $ff;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.svg__link {
+  line-height: 0;
+}
+
+.link {
+  cursor: pointer;
+}

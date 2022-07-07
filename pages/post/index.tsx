@@ -2,26 +2,18 @@ import {GetStaticProps, InferGetStaticPropsType, NextPage} from "next";
 import {useEffect} from "react";
 import Link from "next/link";
 
-interface IPost {
-    id: number;
-    title: string;
-    body: string;
-}
-
-export const getStaticProps: GetStaticProps<{ posts: IPost[] }> = async (context) => {
-    const posts = await (await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10')).json() as IPost[];
-
+export const getStaticProps: GetStaticProps<{ posts: Array<{id: number, title: string}> }> = async () => {
     return {
         props: {
-            posts
+            posts: [{id: 1, title: "post title"}]
         }
     }
 }
 
-const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({posts = []}) => {
 
+const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({posts}) => {
     useEffect(() => {
-        console.log('Post')
+        console.log('RENDER: Post')
     })
 
     return (
@@ -33,9 +25,7 @@ const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({posts =
                         <Link
                             href={{
                                 pathname: '/post/[id]',
-                                query: {
-                                    id: post.id
-                                }
+                                query: {id: post.id}
                             }}
                         >
                             <a>{post.title}</a>
@@ -48,4 +38,4 @@ const Post: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({posts =
 }
 
 
-export default Post
+export default Post;

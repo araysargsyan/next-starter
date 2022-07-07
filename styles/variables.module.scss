@@ -1,0 +1,7 @@
+@import "config/vars";
+
+:export {
+  cAccent: $cAccent;
+  cAccentBoxShadow: rgba($cAccent, .93);
+  bgcNavbar: $bgcNavbar;
+}

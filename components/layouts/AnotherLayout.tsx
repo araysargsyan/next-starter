@@ -1,6 +1,6 @@
-import {FC, ReactNode} from "react";
+import {FC, ReactElement} from "react";
 
-const AnotherLayout: FC<{children: ReactNode}> = ({children}) => {
+const AnotherLayout: FC<{children: ReactElement}> = ({children}) => {
     return (
         <div>
             <h1>AnotherLayout</h1>
